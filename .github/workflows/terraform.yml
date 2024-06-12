@@ -1,4 +1,4 @@
-name: "vprofile INAC"
+name: "vprofile IAC"
 
 on:
   push:
