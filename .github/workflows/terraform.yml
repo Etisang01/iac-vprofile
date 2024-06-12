@@ -41,6 +41,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Verify AWS credentials
+        run: aws sts get-caller-identity
+
       - name: Verify Terraform version
         run: terraform --version
 
