@@ -10,9 +10,6 @@ on:
       - main
 
 env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
   AWS_REGION: us-east-1
   EKS_CLUSTER: vprofile-eks
 
@@ -30,7 +27,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Print AWS Access Key ID
-        run: echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_ID }}"
+        run: echo "AWS_ACCESS_KEY_ID is set"
 
       - name: Print AWS Secret Access Key
         run: echo "AWS_SECRET_ACCESS_KEY is set"
@@ -58,7 +55,7 @@ jobs:
 
       - name: Terraform init
         id: init
-        run: terraform init -backend-config="bucket=${{ env.BUCKET_TF_STATE }}"
+        run: terraform init -backend-config="bucket=${{ secrets.BUCKET_TF_STATE }}"
 
       - name: Terraform format
         id: fmt
