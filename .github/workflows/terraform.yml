@@ -29,6 +29,15 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
+      - name: Print AWS Access Key ID
+        run: echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_ID }}"
+
+      - name: Print AWS Secret Access Key
+        run: echo "AWS_SECRET_ACCESS_KEY is set"
+
+      - name: Print Bucket TF State
+        run: echo "BUCKET_TF_STATE=${{ secrets.BUCKET_TF_STATE }}"
+
       - name: Setup Terraform with specified version on the runner
         uses: hashicorp/setup-terraform@v2
         with:
